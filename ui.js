@@ -12,13 +12,16 @@ class UI {
   }
 
   paint(weather) {
-    this.location.textContent = weather.data.city_name;
-    this.desc.textContent = weather.data.weather;
-    this.string.textContent = weather.data.temp;
-    // this.icon.setAttribute('src', )
-    // this.humiditiy.textContent = `Relative Humidity: ${weather.data.rh}`;
-    this.feelsLike.textContent = `Feels Like: ${weather.data.app_temp}`;
-    this.dewpoint.textContent = `Dewpoint: ${weather.data.dewpt}`;
-    this.wind.textContent = `Wind: ${weather.wind_spd}`;
+    this.location.textContent = weather.data[0].city_name;
+    this.desc.textContent = weather.data[0].weather.description;
+    this.string.textContent = `${weather.data[0].temp} F`;
+    this.icon.setAttribute(
+      'src',
+      `https://www.weatherbit.io/static/img/icons/${weather.data[0].weather.icon}.png`
+    );
+    this.humidity.textContent = `Relative Humidity: ${weather.data[0].rh}`;
+    this.feelsLike.textContent = `Feels Like: ${weather.data[0].app_temp}`;
+    this.dewpoint.textContent = `Dewpoint: ${weather.data[0].dewpt}`;
+    this.wind.textContent = `Windspeed: ${weather.data[0].wind_spd} MPH from the ${weather.data[0].wind_cdir}`;
   }
 }
